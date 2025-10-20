@@ -1,14 +1,32 @@
 {
   "id": "is_vacation",
   "title": {
-    "en": "Today is a school vacation",
-    "de": "Heute sind Schulferien"
+    "de": "Heute sind Schulferien in [[state]]",
+    "en": "Today is a school holiday in [[state]]"
   },
-  "hint": {
-    "en": "Checks if today is within a school vacation period.",
-    "de": "Prüft, ob heute Schulferien sind."
-  },
-  "args": [],
-  "function": "isVacationToday"
+  "args": [
+    {
+      "name": "state",
+      "type": "dropdown",
+      "title": { "de": "Bundesland", "en": "State" },
+      "values": [
+        { "id": "BW", "title": { "de": "Baden-Württemberg", "en": "Baden-Württemberg" } },
+        { "id": "BY", "title": { "de": "Bayern", "en": "Bavaria" } },
+        { "id": "BE", "title": { "de": "Berlin", "en": "Berlin" } },
+        { "id": "BB", "title": { "de": "Brandenburg", "en": "Brandenburg" } },
+        { "id": "HB", "title": { "de": "Bremen", "en": "Bremen" } },
+        { "id": "HH", "title": { "de": "Hamburg", "en": "Hamburg" } },
+        { "id": "HE", "title": { "de": "Hessen", "en": "Hesse" } },
+        { "id": "MV", "title": { "de": "Mecklenburg-Vorpommern", "en": "Mecklenburg-Western Pomerania" } },
+        { "id": "NI", "title": { "de": "Niedersachsen", "en": "Lower Saxony" } },
+        { "id": "NW", "title": { "de": "Nordrhein-Westfalen", "en": "North Rhine-Westphalia" } },
+        { "id": "RP", "title": { "de": "Rheinland-Pfalz", "en": "Rhineland-Palatinate" } },
+        { "id": "SL", "title": { "de": "Saarland", "en": "Saarland" } },
+        { "id": "SN", "title": { "de": "Sachsen", "en": "Saxony" } },
+        { "id": "ST", "title": { "de": "Sachsen-Anhalt", "en": "Saxony-Anhalt" } },
+        { "id": "SH", "title": { "de": "Schleswig-Holstein", "en": "Schleswig-Holstein" } },
+        { "id": "TH", "title": { "de": "Thüringen", "en": "Thuringia" } }
+      ]
+    }
+  ]
 }
-

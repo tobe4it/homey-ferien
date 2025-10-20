@@ -1,135 +1,164 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "de.tbergen.ferien",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "compatibility": ">=12.4.0",
   "sdk": 3,
   "platforms": [
     "local"
   ],
   "name": {
-    "en": "Ferien"
+    "de": "Ferien",
+    "en": "Holidays"
   },
   "description": {
-    "en": "Schulferien und Feiertage in Deutschland"
+    "de": "Zeigt Schulferien und gesetzliche Feiertage in Deutschland an.",
+    "en": "Displays school vacations and public holidays in Germany."
   },
-  "brandColor": "#0A84FF",
   "category": [
     "tools"
   ],
-  "permissions": [],
+  "author": {
+    "name": "Thomas Bergen",
+    "email": "thomas@tbergen.de"
+  },
+  "brandColor": "#2F80ED",
+  "permissions": [
+    "homey:manager:api"
+  ],
   "images": {
     "small": "/assets/images/small.png",
     "large": "/assets/images/large.png",
     "xlarge": "/assets/images/xlarge.png"
   },
-  "author": {
-    "name": "Thomas Bergen",
-    "email": "thomas@tbergen.de"
-  },
   "settings": [
+    {
+      "id": "info",
+      "type": "label",
+      "title": {
+        "de": "Einstellungen",
+        "en": "Settings"
+      }
+    },
     {
       "id": "state",
       "type": "dropdown",
       "title": {
-        "en": "Bundesland"
+        "de": "Bundesland",
+        "en": "State"
       },
       "value": "NI",
       "values": [
         {
           "id": "BW",
           "title": {
-            "en": "Baden-Württemberg"
+            "de": "Baden-Württemberg",
+            "en": "Baden-Wuerttemberg"
           }
         },
         {
           "id": "BY",
           "title": {
-            "en": "Bayern"
+            "de": "Bayern",
+            "en": "Bavaria"
           }
         },
         {
           "id": "BE",
           "title": {
+            "de": "Berlin",
             "en": "Berlin"
           }
         },
         {
           "id": "BB",
           "title": {
+            "de": "Brandenburg",
             "en": "Brandenburg"
           }
         },
         {
           "id": "HB",
           "title": {
+            "de": "Bremen",
             "en": "Bremen"
           }
         },
         {
           "id": "HH",
           "title": {
+            "de": "Hamburg",
             "en": "Hamburg"
           }
         },
         {
           "id": "HE",
           "title": {
-            "en": "Hessen"
+            "de": "Hessen",
+            "en": "Hesse"
           }
         },
         {
           "id": "MV",
           "title": {
-            "en": "Mecklenburg-Vorpommern"
+            "de": "Mecklenburg-Vorpommern",
+            "en": "Mecklenburg-Western Pomerania"
           }
         },
         {
           "id": "NI",
           "title": {
-            "en": "Niedersachsen"
+            "de": "Niedersachsen",
+            "en": "Lower Saxony"
           }
         },
         {
           "id": "NW",
           "title": {
-            "en": "Nordrhein-Westfalen"
+            "de": "Nordrhein-Westfalen",
+            "en": "North Rhine-Westphalia"
           }
         },
         {
           "id": "RP",
           "title": {
-            "en": "Rheinland-Pfalz"
+            "de": "Rheinland-Pfalz",
+            "en": "Rhineland-Palatinate"
           }
         },
         {
           "id": "SL",
           "title": {
+            "de": "Saarland",
             "en": "Saarland"
           }
         },
         {
           "id": "SN",
           "title": {
-            "en": "Sachsenü"
+            "de": "Sachsen",
+            "en": "Saxony"
           }
         },
         {
           "id": "ST",
           "title": {
-            "en": "Sachsen-Anhalt"
+            "de": "Sachsen-Anhalt",
+            "en": "Saxony-Anhalt"
           }
         },
         {
           "id": "SH",
           "title": {
+            "de": "Schleswig-Holstein",
             "en": "Schleswig-Holstein"
           }
         },
         {
           "id": "TH",
           "title": {
-            "en": "Thüringen"
+            "de": "Thüringen",
+            "en": "Thuringia"
           }
         }
       ]
@@ -138,38 +167,302 @@
       "id": "check_vacation",
       "type": "checkbox",
       "title": {
-        "en": "Schulferien prüfen"
+        "de": "Schulferien prüfen",
+        "en": "Check school vacations"
       },
       "value": true
     }
   ],
+  "customViews": {
+    "appSettings": {
+      "id": "settings",
+      "type": "app-settings",
+      "source": "web/settings/index.html",
+      "title": {
+        "de": "App-Einstellungen",
+        "en": "App Settings"
+      }
+    }
+  },
+  "api": {
+    "getStatus": {
+      "method": "GET",
+      "path": "/status"
+    }
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "bergentom"
+      },
+      "githubSponsors": {
+        "username": "tobe4it"
+      }
+    }
+  },
   "flow": {
     "conditions": [
       {
         "id": "is_holiday",
         "title": {
-          "en": "Today is a public holiday",
-          "de": "Heute ist ein gesetzlicher Feiertag"
+          "de": "Heute ist ein gesetzlicher Feiertag in [[state]]",
+          "en": "Today is a public holiday in [[state]]"
         },
-        "hint": {
-          "en": "Checks if today is a public holiday in the selected state.",
-          "de": "Prüft, ob heute ein gesetzlicher Feiertag im gewählten Bundesland ist."
-        },
-        "args": [],
-        "function": "isHolidayToday"
+        "args": [
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "de": "Bundesland",
+              "en": "State"
+            },
+            "values": [
+              {
+                "id": "BW",
+                "title": {
+                  "de": "Baden-Württemberg",
+                  "en": "Baden-Württemberg"
+                }
+              },
+              {
+                "id": "BY",
+                "title": {
+                  "de": "Bayern",
+                  "en": "Bavaria"
+                }
+              },
+              {
+                "id": "BE",
+                "title": {
+                  "de": "Berlin",
+                  "en": "Berlin"
+                }
+              },
+              {
+                "id": "BB",
+                "title": {
+                  "de": "Brandenburg",
+                  "en": "Brandenburg"
+                }
+              },
+              {
+                "id": "HB",
+                "title": {
+                  "de": "Bremen",
+                  "en": "Bremen"
+                }
+              },
+              {
+                "id": "HH",
+                "title": {
+                  "de": "Hamburg",
+                  "en": "Hamburg"
+                }
+              },
+              {
+                "id": "HE",
+                "title": {
+                  "de": "Hessen",
+                  "en": "Hesse"
+                }
+              },
+              {
+                "id": "MV",
+                "title": {
+                  "de": "Mecklenburg-Vorpommern",
+                  "en": "Mecklenburg-Western Pomerania"
+                }
+              },
+              {
+                "id": "NI",
+                "title": {
+                  "de": "Niedersachsen",
+                  "en": "Lower Saxony"
+                }
+              },
+              {
+                "id": "NW",
+                "title": {
+                  "de": "Nordrhein-Westfalen",
+                  "en": "North Rhine-Westphalia"
+                }
+              },
+              {
+                "id": "RP",
+                "title": {
+                  "de": "Rheinland-Pfalz",
+                  "en": "Rhineland-Palatinate"
+                }
+              },
+              {
+                "id": "SL",
+                "title": {
+                  "de": "Saarland",
+                  "en": "Saarland"
+                }
+              },
+              {
+                "id": "SN",
+                "title": {
+                  "de": "Sachsen",
+                  "en": "Saxony"
+                }
+              },
+              {
+                "id": "ST",
+                "title": {
+                  "de": "Sachsen-Anhalt",
+                  "en": "Saxony-Anhalt"
+                }
+              },
+              {
+                "id": "SH",
+                "title": {
+                  "de": "Schleswig-Holstein",
+                  "en": "Schleswig-Holstein"
+                }
+              },
+              {
+                "id": "TH",
+                "title": {
+                  "de": "Thüringen",
+                  "en": "Thuringia"
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "is_vacation",
         "title": {
-          "en": "Today is a school vacation",
-          "de": "Heute sind Schulferien"
+          "de": "Heute sind Schulferien in [[state]]",
+          "en": "Today is a school holiday in [[state]]"
         },
-        "hint": {
-          "en": "Checks if today is within a school vacation period.",
-          "de": "Prüft, ob heute Schulferien sind."
-        },
-        "args": [],
-        "function": "isVacationToday"
+        "args": [
+          {
+            "name": "state",
+            "type": "dropdown",
+            "title": {
+              "de": "Bundesland",
+              "en": "State"
+            },
+            "values": [
+              {
+                "id": "BW",
+                "title": {
+                  "de": "Baden-Württemberg",
+                  "en": "Baden-Württemberg"
+                }
+              },
+              {
+                "id": "BY",
+                "title": {
+                  "de": "Bayern",
+                  "en": "Bavaria"
+                }
+              },
+              {
+                "id": "BE",
+                "title": {
+                  "de": "Berlin",
+                  "en": "Berlin"
+                }
+              },
+              {
+                "id": "BB",
+                "title": {
+                  "de": "Brandenburg",
+                  "en": "Brandenburg"
+                }
+              },
+              {
+                "id": "HB",
+                "title": {
+                  "de": "Bremen",
+                  "en": "Bremen"
+                }
+              },
+              {
+                "id": "HH",
+                "title": {
+                  "de": "Hamburg",
+                  "en": "Hamburg"
+                }
+              },
+              {
+                "id": "HE",
+                "title": {
+                  "de": "Hessen",
+                  "en": "Hesse"
+                }
+              },
+              {
+                "id": "MV",
+                "title": {
+                  "de": "Mecklenburg-Vorpommern",
+                  "en": "Mecklenburg-Western Pomerania"
+                }
+              },
+              {
+                "id": "NI",
+                "title": {
+                  "de": "Niedersachsen",
+                  "en": "Lower Saxony"
+                }
+              },
+              {
+                "id": "NW",
+                "title": {
+                  "de": "Nordrhein-Westfalen",
+                  "en": "North Rhine-Westphalia"
+                }
+              },
+              {
+                "id": "RP",
+                "title": {
+                  "de": "Rheinland-Pfalz",
+                  "en": "Rhineland-Palatinate"
+                }
+              },
+              {
+                "id": "SL",
+                "title": {
+                  "de": "Saarland",
+                  "en": "Saarland"
+                }
+              },
+              {
+                "id": "SN",
+                "title": {
+                  "de": "Sachsen",
+                  "en": "Saxony"
+                }
+              },
+              {
+                "id": "ST",
+                "title": {
+                  "de": "Sachsen-Anhalt",
+                  "en": "Saxony-Anhalt"
+                }
+              },
+              {
+                "id": "SH",
+                "title": {
+                  "de": "Schleswig-Holstein",
+                  "en": "Schleswig-Holstein"
+                }
+              },
+              {
+                "id": "TH",
+                "title": {
+                  "de": "Thüringen",
+                  "en": "Thuringia"
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   }

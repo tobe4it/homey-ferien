@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ferien – App-Einstellungen</title>
+  <style>
+    body { font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+           margin: 16px; color: #eaeaea; background: #111; }
+    .card { background:#1b1b1b; border-radius:12px; padding:16px; margin-bottom:12px; }
+    h1 { font-size:20px; margin:0 0 12px; }
+    h2 { font-size:16px; margin:0 0 8px; color:#9ec2ff; }
+    .row { display:flex; justify-content:space-between; margin:6px 0; }
+    .key { color:#9aa0a6; }
+    .val { color:#eaeaea; font-weight:600; }
+    .pill { display:inline-block; padding:4px 8px; border-radius:999px; margin:2px 4px 0 0; background:#2f80ed22; }
+    .ok { color:#34d399; }
+    .bad{ color:#fb7185; }
+    .muted { color:#9aa0a6; font-size:12px; }
+    .btn { padding:10px 14px; border:none; border-radius:10px; background:#2F80ED; color:#fff; font-weight:600; cursor:pointer; }
+    .btn:disabled { opacity:.5; cursor:default; }
+    .toolbar { display:flex; gap:8px; margin-top:12px; }
+    .spin { animation: r 1s linear infinite; display:inline-block }
+    @keyframes r { to{ transform: rotate(360deg) } }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Ferien – App-Einstellungen</h1>
+    <div class="muted">Diese Ansicht zeigt den heutigen Status. Die eigentlichen Optionen
+      (Bundesland &amp; „Schulferien prüfen“) stellst du im App-Eintrag über die
+      Auto-Einstellungen ein.</div>
+    <div class="toolbar">
+      <button id="refresh" class="btn">Aktualisieren</button>
+      <span id="stateBadge" class="pill"></span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Heute</h2>
+    <div class="row"><span class="key">Datum</span><span id="date" class="val">–</span></div>
+    <div class="row"><span class="key">Bundesland</span><span id="state" class="val">–</span></div>
+    <div class="row"><span class="key">Gesetzlicher Feiertag</span>
+      <span id="ph" class="val">–</span></div>
+    <div class="row"><span class="key">Schulferien</span>
+      <span id="vac" class="val">–</span></div>
+  </div>
+
+  <div class="card">
+    <h2>Details</h2>
+    <div class="row"><span class="key">Feiertag(e)</span>
+      <span id="phNames" class="val">–</span></div>
+    <div class="row"><span class="key">Ferien</span>
+      <span id="vacNames" class="val">–</span></div>
+  </div>
+
+  <div class="card">
+    <h2>Status</h2>
+    <div class="row"><span class="key">Besonderer Tag</span>
+      <span id="special" class="val">–</span></div>
+  </div>
+
+  <!-- WICHTIG: Homey Bridge Script mit data-origin -->
+  <script src="/homey.js" data-origin="app-settings"></script>
+  <script src="/web/settings/settings.js"></script>
+</body>
+</html>
