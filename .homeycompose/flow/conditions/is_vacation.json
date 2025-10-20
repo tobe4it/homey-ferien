@@ -1,0 +1,14 @@
+{
+  "id": "is_vacation",
+  "title": {
+    "en": "Today is a school vacation",
+    "de": "Heute sind Schulferien"
+  },
+  "hint": {
+    "en": "Checks if today is within a school vacation period.",
+    "de": "Prüft, ob heute Schulferien sind."
+  },
+  "args": [],
+  "function": "isVacationToday"
+}
+

@@ -1,3 +1,176 @@
 {
-  "_comment": "This file is generated. Please edit .homeycompose/app.json instead."
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "de.tbergen.ferien",
+  "version": "1.0.2",
+  "compatibility": ">=12.4.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Ferien"
+  },
+  "description": {
+    "en": "Schulferien und Feiertage in Deutschland"
+  },
+  "brandColor": "#0A84FF",
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Thomas Bergen",
+    "email": "thomas@tbergen.de"
+  },
+  "settings": [
+    {
+      "id": "state",
+      "type": "dropdown",
+      "title": {
+        "en": "Bundesland"
+      },
+      "value": "NI",
+      "values": [
+        {
+          "id": "BW",
+          "title": {
+            "en": "Baden-Württemberg"
+          }
+        },
+        {
+          "id": "BY",
+          "title": {
+            "en": "Bayern"
+          }
+        },
+        {
+          "id": "BE",
+          "title": {
+            "en": "Berlin"
+          }
+        },
+        {
+          "id": "BB",
+          "title": {
+            "en": "Brandenburg"
+          }
+        },
+        {
+          "id": "HB",
+          "title": {
+            "en": "Bremen"
+          }
+        },
+        {
+          "id": "HH",
+          "title": {
+            "en": "Hamburg"
+          }
+        },
+        {
+          "id": "HE",
+          "title": {
+            "en": "Hessen"
+          }
+        },
+        {
+          "id": "MV",
+          "title": {
+            "en": "Mecklenburg-Vorpommern"
+          }
+        },
+        {
+          "id": "NI",
+          "title": {
+            "en": "Niedersachsen"
+          }
+        },
+        {
+          "id": "NW",
+          "title": {
+            "en": "Nordrhein-Westfalen"
+          }
+        },
+        {
+          "id": "RP",
+          "title": {
+            "en": "Rheinland-Pfalz"
+          }
+        },
+        {
+          "id": "SL",
+          "title": {
+            "en": "Saarland"
+          }
+        },
+        {
+          "id": "SN",
+          "title": {
+            "en": "Sachsenü"
+          }
+        },
+        {
+          "id": "ST",
+          "title": {
+            "en": "Sachsen-Anhalt"
+          }
+        },
+        {
+          "id": "SH",
+          "title": {
+            "en": "Schleswig-Holstein"
+          }
+        },
+        {
+          "id": "TH",
+          "title": {
+            "en": "Thüringen"
+          }
+        }
+      ]
+    },
+    {
+      "id": "check_vacation",
+      "type": "checkbox",
+      "title": {
+        "en": "Schulferien prüfen"
+      },
+      "value": true
+    }
+  ],
+  "flow": {
+    "conditions": [
+      {
+        "id": "is_holiday",
+        "title": {
+          "en": "Today is a public holiday",
+          "de": "Heute ist ein gesetzlicher Feiertag"
+        },
+        "hint": {
+          "en": "Checks if today is a public holiday in the selected state.",
+          "de": "Prüft, ob heute ein gesetzlicher Feiertag im gewählten Bundesland ist."
+        },
+        "args": [],
+        "function": "isHolidayToday"
+      },
+      {
+        "id": "is_vacation",
+        "title": {
+          "en": "Today is a school vacation",
+          "de": "Heute sind Schulferien"
+        },
+        "hint": {
+          "en": "Checks if today is within a school vacation period.",
+          "de": "Prüft, ob heute Schulferien sind."
+        },
+        "args": [],
+        "function": "isVacationToday"
+      }
+    ]
+  }
 }

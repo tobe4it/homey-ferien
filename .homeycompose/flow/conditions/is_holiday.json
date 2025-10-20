@@ -1,0 +1,14 @@
+{
+  "id": "is_holiday",
+  "title": {
+    "en": "Today is a public holiday",
+    "de": "Heute ist ein gesetzlicher Feiertag"
+  },
+  "hint": {
+    "en": "Checks if today is a public holiday in the selected state.",
+    "de": "Prüft, ob heute ein gesetzlicher Feiertag im gewählten Bundesland ist."
+  },
+  "args": [],
+  "function": "isHolidayToday"
+}
+
