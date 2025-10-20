@@ -1,0 +1,70 @@
+{
+  "id": "de.tbergen.ferien",
+  "version": "1.0.0",
+  "compatibility": ">=12.4.0",
+  "sdk": 3,
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "name": {
+    "en": "Ferien"
+  },
+  "description": {
+    "en": "Schulferien und Feiertage in Deutschland"
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Thomas Bergen",
+    "email": "thomas@tbergen.de"
+  }
+  "athom": {
+    "id": "de.tbergen.ferien",
+    "origin": "com.athom.homey",
+    "settings": {
+        "fields": [
+            {
+                "name": "state",
+                "type": "enum",
+                "title": {
+                    "en": "Bundesland"
+                },
+                "options": [
+                    {"value": "BW", "label": {"en": "Baden-Württemberg"}},
+                    {"value": "BY", "label": {"en": "Bayern"}}
+                    {"value": "BE", "label": {"en": "Berlin"}},
+                    {"value": "BB", "label": {"en": "Brandenburg"}},
+                    {"value": "HB", "label": {"en": "Bremen"}},
+                    {"value": "HH", "label": {"en": "Hamburg"}},
+                    {"value": "HE", "label": {"en": "Hessen"}},
+                    {"value": "SN", "label": {"en": "Sachsen"}},
+                    {"value": "SH", "label": {"en": "Schleswig-Holstein"}},
+                    {"value": "MV", "label": {"en": "Mecklenburg-Vorpommern"}},
+                    {"value": "NI", "label": {"en": "Niedersachsen"}},
+                    {"value": "NRW", "label": {"en": "Nordrhein-Westfalen"}}
+                    {"value": "RP", "label": {"en": "Rheinland-Pfalz"}},
+                    {"value": "SA", "label": {"en": "Saarland"}}
+                    {"value": "SA", "label": {"en": "Sachsen-Anhalt"}},
+                    {"value": "TH", "label": {"en": "Th_ringen"}}
+                ]
+            },
+            {
+                "name": "check_vacation",
+                "type": "boolean",
+                "title": {
+                    "en": "Schulferien prüfen"
+                }
+            }
+        ]
+    }
+}
+
+}

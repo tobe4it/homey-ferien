@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homey App Einstellungen</title>
+</head>
+<body>
+    <h1>Einstellungen</h1>
+    <form id="settingsForm">
+        <label for="state">Wähle ein Bundesland:</label>
+        <select id="state" name="state">
+            <option value="BW">Baden-Württemberg</option>
+            <option value="BY">Bayern</option>
+            <option value="HB">Bremen</option>
+            <option value="HH">Hamburg</option>
+            <option value="HE">Hessen</option>
+            <option value="NI">Niedersachsen</option>
+            <option value="SN">Sachsen</option>
+            <option value="SA">Sachsen-Anhalt</option>
+            <option value="TH">Th_ringen</option>
+        </select>
+        <br>
+        <label for="check_vacation">Schulferien prüfen:</label>
+        <input type="checkbox" id="check_vacation" name="check_vacation">
+        <br>
+        <button type="submit">Speichern</button>
+    </form>
+    <script src="./settings.js"></script>
+</body>
+</html>
+
